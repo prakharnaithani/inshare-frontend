@@ -92,7 +92,10 @@ const uploadFile = () => {
   // upload file
   const xhr = new XMLHttpRequest();
  
-
+  xhr.open("POST", uploadURL);
+  xhr.withCredentials = true;
+  xhr.setRequestHeader('Access-Control-Allow-Origin','*');
+  xhr.setRequestHeader("Content-Type", "application/json");
 
 
   // listen for upload progress
@@ -118,8 +121,7 @@ const uploadFile = () => {
     }
   };
 
-  xhr.open("POST", uploadURL);
-  xhr.setRequestHeader('Access-Control-Allow-Origin','*');
+
   xhr.send(formData);
 };
 
